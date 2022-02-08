@@ -13,28 +13,20 @@ roscd echo_helm/scripts
   <arg name="namespace" default="echo"/>
   <arg name="operator_namespace" default="operator"/>
   
-<!--   <param name="/use_sim_time" type="bool" value="true"/> -->
-  <rosparam command="load" file="$(find project11)/parameters/echo.yaml" ns="$(arg namespace)"/>
-  <rosparam command="load" file="$(find project11)/parameters/sim_unh_pier.yaml" ns="$(arg namespace)"/>
 
-  <arg name="override_mpc" default="false"/>
-  <node if="$(arg override_mpc)" pkg="path_follower" type="mpc_adapter_node" name="mpc_adapter" ns="$(arg namespace)"/>
-    
-  <include file="$(find project11)/launch/vehicle_core.launch">
-    <arg name="host" value="localhost"/>
-    <arg name="override_mpc" value="$(arg override_mpc)"/>
-    <arg name="namespace" default="$(arg namespace)"/>
+  <include file="$(find project11)/launch/robot_core.launch">
+    <arg name="namespace" value="$(arg namespace)"/>
+    <arg name="enableBridge" value="false"/>
   </include>
   
   <include file="$(find project11)/launch/operator_core.launch">
-    <arg name="host" value="localhost"/>
-    <arg name="operator_transformations" value="0"/>
-    <arg name="operator_joystick" value="1"/>
     <arg name="namespace" default="$(arg operator_namespace)"/>
+    <arg name="robotNamespace" value="$(arg namespace)"/>
   </include>
     
   <include file="$(find project11)/launch/operator_ui.launch">
     <arg name="namespace" default="$(arg operator_namespace)"/>
+    <arg name="robotNamespace" value="$(arg namespace)"/>
   </include>
 
   <node pkg="mru_transform" type="sensor_sync_node" name="sensor_sync" ns="$(arg namespace)">
@@ -54,5 +46,9 @@ roscd echo_helm/scripts
     <param name="global_position/tf/send" value="false"/>
     <param name="local_position/tf/send" value="false"/>
   </include>
+
+  <rosparam command="load" file="$(find echoboat_project11)/config/echo.yaml" ns="$(arg namespace)"/>
+  <rosparam command="load" file="$(find echoboat_project11)/config/echo_operator.yaml" ns="$(arg operator_namespace)"/>
+
 
 </launch>
