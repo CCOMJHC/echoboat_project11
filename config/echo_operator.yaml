@@ -6,6 +6,6 @@ project11/platforms/echo:
   length: 2.0
   nav_sources:
     combined:
-      position_topic: /echo/project11/nav/position
-      orientation_topic: /echo/project11/nav/orientation
-      velocity_topic: /echo/project11/nav/velocity
+      position_topic: /echo/sensors/sbg/imu/nav_sat_fix
+      orientation_topic: /echo/sensors/sbg/imu/data
+      velocity_topic: /echo/sensors/sbg/imu/velocity

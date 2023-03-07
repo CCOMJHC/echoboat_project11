@@ -1,9 +1,11 @@
 <launch>
+  <arg name="namespace" default="operator"/>
     <include file="$(find project11)/launch/operator_core.launch">
-        <arg name="host" default="192.168.88.7"/>
+        <arg name="robotNamespace" default="echo"/>
         <arg name="operator_transformations" value="1"/>
-        <arg name="operator_joystick" value="1"/>
     </include>
+    <rosparam command="load" file="$(find echoboat_project11)/config/echo_operator.yaml" ns="$(arg namespace)"/>
+
 </launch>
 
 
