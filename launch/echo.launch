@@ -4,7 +4,6 @@
     </include>
 
     <node pkg="echo_helm" type="echo_helm_node" name="echo_helm"/>
-    <node pkg="posmv" type="posmv_node.py" name="posmv"/>
 
     <!--arg name="fcu_url" default="/dev/ttyUSB0:57600" /--> <!-- Port et baudrate of the connexion with Pixhawk -->
     <!-- <arg name="fcu_url" default="udp://:14651@192.168.88.8" />--> <!-- Port et baudrate of the connexion with Pixhawk -->
