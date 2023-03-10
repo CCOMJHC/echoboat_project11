@@ -29,13 +29,6 @@ roscd echo_helm/scripts
     <arg name="namespace" default="$(arg operator_namespace)"/>
     <arg name="robotNamespace" value="$(arg namespace)"/>
   </include>
-
-  <node pkg="mru_transform" type="sensor_sync_node" name="sensor_sync" ns="$(arg namespace)">
-    <param name="outTopicPrefix" value="sensors/mru/"/>
-    <remap from="in/position" to="mavros/global_position/global"/>
-    <remap from="in/orientation" to="mavros/imu/data"/>
-    <remap from="in/velocity" to="mavros/global_position/raw/gps_vel"/>
-  </node>
   
   <node pkg="echo_helm" type="echo_helm_node" name="echo_helm" ns="$(arg namespace)">
     <remap from="cmd_vel" to="control/helm"/>
