@@ -20,3 +20,15 @@ navigator:
     global_frame: echo/map
     robot_base_frame: echo/base_link
     transform_tolerance: 1.0
+
+
+udp_bridge:
+  remotes:
+    operator:
+      connections:
+        default:
+          topics:
+            mavros_orientation: {source: mavros/imu/data}
+            mavros_position: {source: mavros/global_position/global}
+            mavros_velocity: {source: mavros/global_position/raw/gps_vel}
+            
