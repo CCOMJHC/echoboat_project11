@@ -21,6 +21,26 @@ navigator:
     robot_base_frame: echo/base_link
     transform_tolerance: 1.0
 
+s57_grids:
+  map_frame: echo/map
+
+  robot:
+    frame_id: echo/base_link
+    minimum_depth: 0.0
+    maximum_caution_depth: 1.0
+    overhead_clearance: 2.0
+    minimum_speed: 0.01
+    maximum_speed: 2.5
+
+  grids:
+    - name: area
+      resolution: 6.0
+      length: 15000.0
+      period: 30.0
+    - name: local
+      resolution: 3.0
+      length: 5000.0
+      period: 1.0
 
 udp_bridge:
   remotes:

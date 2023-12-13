@@ -35,6 +35,8 @@
       <rosparam command="load" file="$(arg config_yaml)" />
     </node>
 
+    <node pkg="s57_grids" type="s57_grids" name="s57_grids"/>
+
     <node pkg="echo_helm" type="echo_helm_node" name="echo_helm"/>
 
     <rosparam command="load" file="$(find echoboat_project11)/config/echo.yaml"/>
