@@ -16,6 +16,8 @@ navigator:
     default_velocity:
       linear/x: 1.5
 
+    footprint: [[1.0, 0], [0.0, 0.3], [-0.5, 0.3], [-0.5, -0.3], [0.0, -0.3], [1.0, 0]]
+
   costmap:
     global_frame: echo/map
     robot_base_frame: echo/base_link
