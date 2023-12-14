@@ -27,6 +27,21 @@ navigator:
     robot_base_frame: echo/base_link
     transform_tolerance: 1.0
 
+  plugins:
+    TaskToTaskWorkflow:
+      ccom_planner: ccom_planner/Planner
+
+  TaskToTwistWorkflow/transit:
+    steps:
+      - ccom_planner
+    last_step: path_follower
+
+
+  TaskToTwistWorkflow/hover:
+    maximum_distance: 2.0
+    minimum_distance: 1.0
+    maximum_speed: 1.0
+
 s57_grids:
   map_frame: echo/map
 
