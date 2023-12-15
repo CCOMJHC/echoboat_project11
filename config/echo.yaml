@@ -14,7 +14,7 @@ mavros:
     tf/send: false
 navigator:
   robot:
-    turn_radius: 5.0
+    turn_radius: 2.0
 
     max_velocity:
       linear/x: 1.75
