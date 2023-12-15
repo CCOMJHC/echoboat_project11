@@ -18,26 +18,19 @@ roscd echo_helm/scripts
   
 
   <group if="$(arg launchRobot)">
-
-    <include file="$(find project11)/launch/robot_core.launch">
+    <include file="$(find echoboat_project11)/launch/echo.launch">
       <arg name="namespace" value="$(arg namespace)"/>
       <arg name="enableBridge" value="$(arg enableBridge)"/>
-    </include>
-    <rosparam param="udp_bridge/remotes/operator/connections/default/port" ns="$(arg namespace)" subst_value="True">4201</rosparam>
-    <rosparam param="udp_bridge/remotes/operator/connections/default/host" ns="$(arg namespace)" subst_value="True">localhost</rosparam>
+      <arg name="operator_host" value="localhost"/>
 
-    <node pkg="echo_helm" type="echo_helm_node" name="echo_helm" ns="$(arg namespace)">
-      <remap from="cmd_vel" to="control/helm"/>
-    </node>
-    
-    <include file="$(find mavros)/launch/apm.launch" ns="$(arg namespace)">
       <arg name="fcu_url" value="tcp://0.0.0.0:5760@"/>
       <arg name="gcs_url" value="udp://@127.0.0.1:14550"/>
-      <param name="global_position/tf/send" value="false"/>
-      <param name="local_position/tf/send" value="false"/>
+
     </include>
 
-    <rosparam command="load" file="$(find echoboat_project11)/config/echo.yaml" ns="$(arg namespace)"/>
+    <rosparam param="udp_bridge/remotes/operator/connections/default/port" ns="$(arg namespace)" subst_value="True">4201</rosparam>
+    <rosparam param="udp_bridge/remotes/operator/connections/default/host" ns="$(arg namespace)" subst_value="True">localhost</rosparam>
+    
   </group>
 
   <group if="$(arg launchOperator)">
