@@ -3,8 +3,8 @@ mru_transform/sensors:
    topics: { position: 'mavros/global_position/global', orientation: 'mavros/imu/data', velocity: 'mavros/global_position/raw/gps_vel'}
       
 helm_manager/output_type: 'twist'
-helm_manager/twist/max_speed: 2.75
-helm_manager/twist/max_yaw_speed: 0.5
+helm_manager/twist/max_speed: 2.0
+helm_manager/twist/max_yaw_speed: 1.5
 
 mavros:
   conn/timesync_rate: 0.0
@@ -12,37 +12,47 @@ mavros:
     tf/send: false
   local_position:
     tf/send: false
+
 navigator:
   robot:
-    turn_radius: 2.0
+    turn_radius: 4.0
 
     max_velocity:
-      linear/x: 1.75
+      linear/x: 2.0
+      angular/z: 1.5
 
     default_velocity:
       linear/x: 1.5
 
+    max_acceleration:
+      linear/x: 0.75
+      angular/z: 0.8
+
+    default_acceleration:
+      linear/x: 0.7
+      angular/z: .3
+
+    default_deceleration:
+      linear/x: -0.35
+      angular/z: -0.3
+
+    max_deceleration:
+      linear/x: -0.7
+      angular/z: -0.8
+
     footprint: [[1.0, 0], [0.0, 0.3], [-0.5, 0.3], [-0.5, -0.3], [0.0, -0.3], [1.0, 0]]
+    radius: 2.5
 
   costmap:
     global_frame: echo/map
     robot_base_frame: echo/base_link
     transform_tolerance: 1.0
 
-  plugins:
-    TaskToTaskWorkflow:
-      ccom_planner: ccom_planner/Planner
-
-  TaskToTwistWorkflow/transit:
-    steps:
-      - ccom_planner
-    last_step: path_follower
-
-
-  TaskToTwistWorkflow/hover:
-    maximum_distance: 2.0
-    minimum_distance: 1.0
-    maximum_speed: 1.0
+  path_follower:
+    pid:
+      Kp: 6.0
+      Ki: 0.5
+      Kd: 0.6
 
 s57_grids:
   map_frame: echo/map
