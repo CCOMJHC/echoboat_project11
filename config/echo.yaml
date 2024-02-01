@@ -50,7 +50,7 @@ navigator:
 
   path_follower:
     pid:
-      Kp: 6.0
+      Kp: 20.0
       Ki: 0.5
       Kd: 0.6
 
