@@ -55,7 +55,7 @@
     <arg name="namespace" value="$(arg namespace)"/>
     <arg name="platform_name" value="$(arg platform_name)"/>
     <arg name="nav_source" value="mavros"/>
-    <arg name="position_topic" value="mavros/global_position/global"/>
+    <arg name="position_topic" value="mavros/global_position/raw/fix"/>
     <arg name="orientation_topic" value="mavros/imu/data"/>
     <arg name="velocity_topic" value="mavros/global_position/raw/gps_vel"/>
   </include>
