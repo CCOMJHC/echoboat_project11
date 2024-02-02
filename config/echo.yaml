@@ -3,8 +3,8 @@ mru_transform/sensors:
    topics: { position: 'mavros/global_position/raw/fix', orientation: 'mavros/imu/data', velocity: 'mavros/global_position/raw/gps_vel'}
       
 helm_manager/output_type: 'twist'
-helm_manager/twist/max_speed: 2.0
-helm_manager/twist/max_yaw_speed: 1.5
+helm_manager/max_speed: 2.0
+helm_manager/max_yaw_speed: 1.5
 
 mavros:
   conn/timesync_rate: 0.0
