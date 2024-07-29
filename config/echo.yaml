@@ -14,7 +14,9 @@ mavros:
     tf/send: false
 
 navigator:
-  survey_lead_in_distance: 3.5
+  survey_lead_in_distance: 2.5
+  waypoint_reached_distance: 2.0
+
   robot:
     turn_radius: 4.0
 
