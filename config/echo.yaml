@@ -25,7 +25,7 @@ navigator:
       angular/z: 1.5
 
     default_velocity:
-      linear/x: 1.5
+      linear/x: 1.0
 
     max_acceleration:
       linear/x: 0.75
